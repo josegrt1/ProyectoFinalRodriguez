@@ -77,10 +77,6 @@ src/
  ├─ index.css
  └─ App.css
 
-
-🌐 Deploy
-🔗 Versión online (Vercel o Netlify): pendiente de agregar
-
 🧰 Repositorio: https://github.com/josegrt1/ProyectoFinalRodriguez
 
 👨‍💻 Autor
