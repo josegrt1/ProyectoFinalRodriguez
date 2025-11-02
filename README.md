@@ -89,8 +89,3 @@ José Rodríguez
 🎓 Curso de Desarrollo Web – React JS
 🗓️ Año: 2025
 
-
-```bash
-git add README.md
-git commit -m "docs: actualiza README con presentación profesional"
-git push
