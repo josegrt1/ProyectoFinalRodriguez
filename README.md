@@ -1,12 +1,96 @@
-# React + Vite
+# 🛫 Proyecto Final – *Vuelos y Más* ✈️  
+**E-commerce SPA desarrollada con React + Vite, Firebase y Context API.**  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto constituye la **entrega final del curso de React (Front End)**, donde se desarrolla una aplicación web de tipo e-commerce con conexión a Firestore para el manejo de productos y órdenes de compra.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧭 Descripción General
 
-## Expanding the ESLint configuration
+**Vuelos y Más** es una Single Page Application (SPA) que simula una tienda de viajes y experiencias.  
+Permite navegar entre distintas categorías, visualizar el detalle de cada producto, agregar al carrito, y finalizar la compra con un formulario de checkout que genera una orden en Firebase.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧱 Tecnologías Utilizadas
+
+- ⚛️ **React 18 + Vite**
+- 🧭 **React Router DOM**
+- 🧩 **Context API** (para el estado global del carrito)
+- 🔥 **Firebase / Firestore**
+- 💅 **CSS personalizado** + soporte opcional de **Bootstrap**
+- 🧹 **ESLint** y **Prettier** para buenas prácticas
+
+---
+
+## 📦 Funcionalidades Principales
+
+| Sección | Descripción |
+|----------|--------------|
+| **Catálogo** | Listado dinámico de productos desde Firestore, filtrados por categoría. |
+| **Detalle de producto** | Vista individual con descripción, precio, y selector de cantidad. |
+| **ItemCount** | Permite elegir unidades, validando stock y límites. |
+| **Carrito** | Visualiza los productos agregados, subtotales y total general. |
+| **Checkout** | Formulario para ingresar datos del comprador y confirmar compra. |
+| **Orden en Firestore** | Al confirmar, se crea un documento en Firestore con todos los datos. |
+| **Renderizado condicional** | Mensajes de “sin stock”, “carrito vacío”, loaders y confirmaciones. |
+
+---
+
+## 💾 Variables de entorno
+
+Crea un archivo `.env` basado en el ejemplo `.env.example` e inserta tus credenciales de Firebase:
+
+```bash
+VITE_API_KEY=
+VITE_AUTH_DOMAIN=
+VITE_PROJECT_ID=
+VITE_STORAGE_BUCKET=
+VITE_MESSAGING_SENDER_ID=
+VITE_APP_ID=
+
+🧩 Estructura del Proyecto
+css
+Copiar código
+src/
+ ├─ components/
+ │   ├─ ItemListContainer.jsx
+ │   ├─ ItemList.jsx
+ │   ├─ ItemDetailContainer.jsx
+ │   ├─ ItemDetail.jsx
+ │   ├─ ItemCount.jsx
+ │   ├─ NavBar.jsx
+ │   ├─ Cart.jsx
+ │   ├─ CartItem.jsx
+ │   ├─ CartWidget.jsx
+ │   └─ CheckoutForm.jsx
+ │
+ ├─ context/
+ │   └─ cartcontext.jsx
+ │
+ ├─ data/
+ │   └─ products.js
+ │
+ ├─ firebase.js
+ ├─ App.jsx
+ ├─ main.jsx
+ ├─ index.css
+ └─ App.css
+
+
+🌐 Deploy
+🔗 Versión online (Vercel o Netlify): pendiente de agregar
+
+🧰 Repositorio: https://github.com/josegrt1/ProyectoFinalRodriguez
+
+👨‍💻 Autor
+José Rodríguez
+📍 buenos aires
+🎓 Curso de Desarrollo Web – React JS
+🗓️ Año: 2025
+
+
+```bash
+git add README.md
+git commit -m "docs: actualiza README con presentación profesional"
+git push
