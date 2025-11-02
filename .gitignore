@@ -18,7 +18,7 @@ build/
 
 .env
 .env.*
-!.env.example  # permitimos subir solo el ejemplo
+!.env.example
 
 
 .vscode/
