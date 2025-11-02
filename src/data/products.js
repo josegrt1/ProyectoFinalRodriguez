@@ -18,7 +18,8 @@ export async function getProductById(id) {
 }
 
 export const CATEGORIES = [
-  { id: 'equipaje',   label: 'Equipaje' },
-  { id: 'accesorios', label: 'Accesorios' },
-  { id: 'confort',    label: 'Confort' },
-]
+  { id: "equipaje",   label: "Promo" },  
+  { id: "accesorios", label: "Puntos" },  
+  { id: "confort",    label: "Confort" },
+];
+

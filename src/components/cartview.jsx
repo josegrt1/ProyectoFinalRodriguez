@@ -1,36 +1,70 @@
-import { useCart } from "../context/cartcontext";
+import { Link } from "react-router-dom";
+import { useCart } from "../context/cartcontext.jsx"; 
 
 export default function CartView() {
-  const { items, totalPrice, removeItem, clear, updateQty } = useCart();
+  const { items, totalPrice, total, dec, add, remove, clear, updateQty } = useCart();
+  const grandTotal = (total ?? totalPrice) || 0;
 
-  if (!items.length) return <p>Tu carrito está vacío.</p>;
+
+  if (!items || items.length === 0) {
+    return (
+      <section>
+        <h1>Tu carrito está vacío</h1>
+        <p>Explora destinos y agrega tu viaje.</p>
+        <Link className="btn" to="/">Volver al catálogo</Link>
+      </section>
+    );
+  }
+
 
   return (
-    <section className="container">
-      <h2>Carrito</h2>
-      <ul style={{ listStyle:'none', padding:0, display:'grid', gap:12 }}>
-        {items.map(it => (
-          <li key={it.id} className="card" style={{ display:'grid', gridTemplateColumns:'80px 1fr auto', gap:12, alignItems:'center' }}>
-            <img src={it.img} alt={it.title} style={{ width:80, height:80, objectFit:'cover', borderRadius:8 }} />
+    <section>
+      <h1>Carrito</h1>
+
+      <ul style={{ padding: 0, listStyle: "none", display: "grid", gap: ".75rem" }}>
+        {items.map((i) => (
+          <li
+            key={i.id}
+            className="card"
+            style={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}
+          >
             <div>
-              <strong>{it.title}</strong>
-              <div style={{ opacity:.8 }}>USD {it.price}</div>
-              <div style={{ marginTop:6 }}>
-                Cantidad:{" "}
-                <input type="number" min={1} max={it.stock} value={it.qty}
-                  onChange={e => updateQty(it.id, Math.max(1, Math.min(it.stock, Number(e.target.value))))}
-                  style={{ width:64 }} />
+              <strong>{i.name}</strong>
+              <div style={{ color: "#555" }}>
+                x{i.qty} · ${Number(i.price || 0).toLocaleString("es-AR")}
+              </div>
+
+              <div style={{ marginTop: ".5rem", display: "flex", gap: ".5rem", alignItems: "center" }}>
+                <button className="btn" onClick={() => dec(i.id)}>-</button>
+                <button className="btn" onClick={() => add(i)}>+</button>
+
+                <input
+                  aria-label="Cantidad"
+                  type="number"
+                  min={1}
+                  value={i.qty}
+                  onChange={(e) => updateQty(i.id, e.target.value)}
+                  style={{ width: 64, textAlign: "center" }}
+                />
+
+                <button className="btn" onClick={() => remove(i.id)}>Eliminar</button>
               </div>
             </div>
-            <div style={{ display:'grid', gap:8 }}>
-              <button onClick={() => removeItem(it.id)}>Quitar</button>
+
+            <div>
+              <strong>${(i.qty * (i.price || 0)).toLocaleString("es-AR")}</strong>
             </div>
           </li>
         ))}
       </ul>
-      <div style={{ marginTop:16, display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-        <button onClick={clear}>Vaciar carrito</button>
-        <h3>Total: USD {totalPrice.toFixed(2)}</h3>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "1rem" }}>
+        <button className="btn" onClick={clear}>Vaciar carrito</button>
+
+        <div style={{ display: "flex", gap: ".75rem", alignItems: "center" }}>
+          <strong>Total: ${grandTotal.toLocaleString("es-AR")}</strong>
+          <Link className="btn primary" to="/checkout">Ir a Checkout</Link>
+        </div>
       </div>
     </section>
   );

@@ -5,12 +5,13 @@ import ItemDetailContainer from './components/ItemDetailContainer'
 import NotFound from './components/NotFound'
 import CartView from './components/cartview'
 import Footer from './components/footer'
+import Checkout from './components/checkout' 
 
 function Layout() {
   return (
     <>
       <NavBar />
-      <main className="container" style={{ padding: '1rem' }}>
+      <main className="container" role="main" style={{ padding: '1rem' }}>
         <Outlet />
       </main>
       <Footer />
@@ -25,8 +26,9 @@ export default function App() {
         <Route path="/" element={<ItemListContainer greeting="¡Bienvenido a Vuelos y Más Store!" />} />
         <Route path="/category/:categoryId" element={<ItemListContainer />} />
         <Route path="/item/:id" element={<ItemDetailContainer />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/cart" element={<CartView />} />
+        <Route path="/checkout" element={<Checkout />} /> {}
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

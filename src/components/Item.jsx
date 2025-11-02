@@ -1,27 +1,29 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-export default function Item({ product }) {
+export default function Item({ item }) {
   return (
-    <article className="card" aria-label={product.title}>
+    <article className="card" aria-label={item.name}>
       <div className="img-wrap">
-        {product.img ? (
-          <img src={product.img} alt={product.title} loading="lazy" />
+        {item.img ? (
+          <img src={item.img} alt={item.name} loading="lazy" />
         ) : (
           <span className="img-ph">IMG</span>
         )}
       </div>
 
-      <h3>{product.title}</h3>
-      <p className="muted">{product.description}</p>
-      <p><strong>USD {product.price}</strong></p>
+      <h3>{item.name}</h3>
+      <p className="muted">{item.desc}</p>
+      <p>
+        <strong>USD {item.price?.toLocaleString("es-AR")}</strong>
+      </p>
 
       <Link
         className="btn link"
-        to={`/item/${product.id}`}
-        aria-label={`Ver detalle de ${product.title}`}
+        to={`/item/${item.id}`}
+        aria-label={`Ver detalle de ${item.name}`}
       >
         Ver detalle
       </Link>
     </article>
-  )
+  );
 }
